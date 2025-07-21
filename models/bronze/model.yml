@@ -1,8 +1,13 @@
 version: 2
 
 sources:
-  - name: PUBLIC
-    database: MAVEN_TOYS  # optional, only if needed
-    schema: PUBLIC
+  - name: public
+    database: maven_toys
+    schema: public
     tables:
-      - name: CALENDER
+      - name: calender
+      - name: dictionary
+      - name: inventory
+      - name: products
+      - name: sales
+      - name: stores

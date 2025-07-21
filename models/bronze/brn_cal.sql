@@ -1,9 +1,4 @@
-{{ config(
-    materialized='table',
-    schema='public'
-) }}
- 
-with source_data as (
+
  
     select
         try_cast("DATE" as date) as calendar_date,
@@ -14,8 +9,5 @@ with source_data as (
         --to_char(try_cast("Date" as date), 'Day') as day_name
         current_timestamp() as ingestion_timestamp
  
-    from {{ source('public', 'calendar') }}
+    from {{ source('public', 'calender') }}
  
-)
- 
-select * from source_data;
