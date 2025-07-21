@@ -1,1 +1,2 @@
-SELECT * FROM Maven_toys.public.calender;
+SELECT *
+FROM {{ source('public', 'calender') }}
