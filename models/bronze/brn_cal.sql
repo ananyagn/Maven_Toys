@@ -14,7 +14,7 @@ with source_data as (
         --to_char(try_cast("Date" as date), 'Day') as day_name
         current_timestamp() as ingestion_timestamp
  
-    from {{ source('public', 'calendar') }}
+    from {{ source('public', 'calender') }}
  
 )
  
