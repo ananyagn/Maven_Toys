@@ -1,2 +1,13 @@
-SELECT *
-FROM {{ source('public', 'calender') }}
+
+ 
+    select
+        try_cast("DATE" as date) as calendar_date,
+        date_part("DAY", try_cast("DATE" as date)) as day,
+        date_part("MONTH", try_cast("DATE" as date)) as month,
+        date_part("YEAR", try_cast("DATE" as date)) as year,
+        date_part("DOW", try_cast("DATE" as date)) as day_of_week,  -- 0=Sunday in Snowflake
+        --to_char(try_cast("Date" as date), 'Day') as day_name
+        current_timestamp() as ingestion_timestamp
+ 
+    from {{ source('public', 'calender') }}
+ 
