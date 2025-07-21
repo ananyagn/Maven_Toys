@@ -5,11 +5,11 @@
 
 with bronze as (
     select
-        try_cast(date as date) as calendar_date,
-        date_part('DAY', try_cast(date as date)) as day,
-        date_part('MONTH', try_cast(date as date)) as month,
-        date_part('YEAR', try_cast(date as date)) as year,
-        date_part('DOW', try_cast(date as date)) as day_of_week,  -- 0=Sunday in Snowflake
+        try_cast(calendar_date as date) as calendar_date,
+        date_part('DAY', try_cast(calendar_date as date)) as day,
+        date_part('MONTH', try_cast(calendar_date as date)) as month,
+        date_part('YEAR', try_cast(calendar_date as date)) as year,
+        date_part('DOW', try_cast(calendar_date as date)) as day_of_week,  -- 0=Sunday in Snowflake
         --to_char(try_cast(date as date), 'Day') as day_name,    -- uncomment if you want day name
         current_timestamp() as ingestion_timestamp
     from {{ ref('brn_cal') }}
